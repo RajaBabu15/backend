@@ -23,12 +23,14 @@ const server = express();
 connectToDB();
 
 // middlewares
-server.use(cors({
+const corsOptions = {
     origin: '*', // Allow requests from any origin
     credentials: true, // Allow cookies to be sent with requests
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allow these HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
-}));
+};
+
+server.use(cors(corsOptions));
 
 
 server.use(express.json());
