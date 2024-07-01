@@ -58,6 +58,14 @@ server.get("/",(req,res)=>{
     res.status(200).json({message:'running'})
 })
 
+server.get("/test-cors", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200).json({ message: 'CORS is working' });
+});
+
+
 server.listen(process.env.PORT || 8000,()=>{
     console.log('server [STARTED] ~ http://localhost: '+process.env.PORT);
 })
