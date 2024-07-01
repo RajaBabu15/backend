@@ -17,18 +17,25 @@ const { connectToDB } = require("./database/db")
 
 
 // server init
-const server=express()
+const server = express();
 
 // database connection
-connectToDB()
-
+connectToDB();
 
 // middlewares
+server.use(cors({
+    origin: ['https://frontend-iota-beryl-58.vercel.app'], // Allow requests from your frontend
+    credentials: true, // Allow cookies to be sent with requests
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allow these HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+}));
 
+server.use(express.json());
+server.use(cookieParser());
+server.use(morgan("tiny"));
 
-server.use(express.json())
-server.use(cookieParser())
-server.use(morgan("tiny"))
+// ... (rest of your code)
+
 
 // routeMiddleware
 server.use("/auth",authRoutes)
