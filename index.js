@@ -32,7 +32,7 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 
-server.options("*", cors({ origin: '*', optionsSuccessStatus: 200 }));
+server.options("*", cors({ origin: '*'}));
 
 
 
