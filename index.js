@@ -32,7 +32,7 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 
-app.options("*", cors({ origin: '*', optionsSuccessStatus: 200 }));
+server.options("*", cors({ origin: '*', optionsSuccessStatus: 200 }));
 
 
 
@@ -55,7 +55,7 @@ server.use("/address", addressRoutes)
 server.use("/reviews", reviewRoutes)
 server.use("/wishlist", wishlistRoutes)
 
-app.use(function (req, res, next) {
+server.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // Update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", "true"); // Add this line to allow credentials
@@ -83,5 +83,5 @@ server.get("/testcors", (req, res) => {
 
 
 server.listen(process.env.PORT || 8000, () => {
-    console.log('server [STARTED] ~ http://localhost: ' + process.env.PORT);
+    console.log('server [STARTED] ~ http://localhost:' + process.env.PORT);
 })
