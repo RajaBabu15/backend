@@ -24,12 +24,7 @@ connectToDB()
 
 
 // middlewares
-server.use(cors({
-    origin: true,
-    credentials: true,
-    exposedHeaders: ['X-Total-Count'],
-    methods: ['GET', 'POST', 'PATCH', 'DELETE']
-}));
+
 
 server.use(express.json())
 server.use(cookieParser())
