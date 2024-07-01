@@ -16,7 +16,7 @@
                 },
                 {
                     "key": "Access-Control-Allow-Origin",
-                    "value": "*" // Allow requests from any origin
+                    "value": "*"
                 },
                 {
                     "key": "Access-Control-Allow-Methods",
