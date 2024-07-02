@@ -41,7 +41,7 @@ server.use(express.json());
 server.use(cookieParser());
 server.use(morgan("tiny"));
 
-service.all('/*', function(req, res, next) {
+server.all('/*', function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "false");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
