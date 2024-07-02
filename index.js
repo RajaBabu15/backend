@@ -33,13 +33,21 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 
-server.options("*", cors({ origin: '*',"optionsSuccessStatus": 200}));
+server.options("*",function (req,res) { res.sendStatus(200); });
 
 
 
 server.use(express.json());
 server.use(cookieParser());
 server.use(morgan("tiny"));
+
+service.all('/*', function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "false");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    next();
+});
 
 // ... (rest of your code)
 
@@ -57,8 +65,9 @@ server.use("/reviews", reviewRoutes)
 server.use("/wishlist", wishlistRoutes)
 
 server.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
     console.log("req",req);
-    console.log(req.method, req.url);
+    console.log("Mehot",req.method, req.url);
     // res.header("Access-Control-Allow-Origin", "*"); // Update to match the domain you will make the request from
     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // res.header("Access-Control-Allow-Credentials", "true"); // Add this line to allow credentials
