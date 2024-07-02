@@ -24,7 +24,7 @@ connectToDB()
 
 
 // middlewares
-server.use(cors({credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
+server.use(cors({origin:'https://frontend-bnji09xyd-raja-babus-projects-23bb134c.vercel.app',credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
 server.use(express.json())
 server.use(cookieParser())
 server.use(morgan("tiny"))
