@@ -24,18 +24,11 @@ connectToDB()
 
 
 // middlewares
-server.use(cors({origin:'https://frontend-iota-beryl-58.vercel.app',credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
+server.use(cors({credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
 server.use(express.json())
 server.use(cookieParser())
 server.use(morgan("tiny"))
-app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://frontend-iota-beryl-58.vercel.app');
-
-    // Pass to next layer of middleware
-    next();
-});
 
 // routeMiddleware
 server.use("/auth",authRoutes)
